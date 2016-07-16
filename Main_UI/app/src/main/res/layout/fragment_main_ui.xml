@@ -39,15 +39,32 @@
 
                         android:layout_weight="1" />
 
-                    <TextView
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="2016年7月10日"
-                        android:id="@+id/id_weather_time"
-                        android:textColor="#FFFF"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:text="城市"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView5"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="40sp"
+                            android:layout_marginRight="70dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="2016年7月10日"
+                            android:id="@+id/id_weather_time"
+                            android:textColor="#FFFF"
+                            android:layout_weight="1" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -91,17 +108,12 @@
 
                 </LinearLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </RelativeLayout>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.08"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="50dp">
 
                     <TextView
                         android:layout_width="88dp"
@@ -116,7 +128,8 @@
                         android:layout_width="11dp"
                         android:layout_height="73dp"
                         app:srcCompat="@drawable/divider"
-                        android:id="@+id/imageView2" />
+                        android:id="@+id/imageView2"
+                        android:layout_marginLeft="10dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -124,33 +137,57 @@
                         android:text="  星期二\n    多云\n17℃/24℃"
                         android:textColor="#FFFF"
 
-                        android:id="@+id/id_future_2" />
+                        android:id="@+id/id_future_2"
+                        android:layout_marginLeft="10dp" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="73dp"
                         app:srcCompat="@drawable/divider"
-                        android:id="@+id/imageView4" />
+                        android:id="@+id/imageView4"
+                        android:layout_marginLeft="10dp" />
 
                     <TextView
-                        android:layout_width="274dp"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:text="  星期三\n      晴\n14℃/27℃"
                         android:textColor="#FFFF"
 
-                        android:id="@+id/id_future_3" />
+                        android:id="@+id/id_future_3"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginLeft="10dp" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="东北风-1级-2km/h 湿度:0.23 空气质量:优-PM2.5:100"
+                    android:text="•东北风-1级-2km/h"
                     android:textColor="#FFFF"
 
                     android:id="@+id/id_weather_txt"
                     android:layout_weight="1"
-                    android:layout_marginTop="20dp" />
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp" />
+
+                <TextView
+                    android:text="•湿度:0.23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp" />
+
+                <TextView
+                    android:text="•空气质量:优-PM2.5:100"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp" />
 
             </LinearLayout>
 

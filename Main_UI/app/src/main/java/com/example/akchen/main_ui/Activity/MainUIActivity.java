@@ -24,6 +24,8 @@ import com.thinkpage.lib.api.TPWeatherNow;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainUIActivity extends AppCompatActivity implements View.OnClickListener, LocationSelectorDialogBuilder.OnSaveLocationLister {
@@ -34,7 +36,11 @@ public class MainUIActivity extends AppCompatActivity implements View.OnClickLis
     private Button main_share = null;
     private LocationSelectorDialogBuilder locationBuilder;
     private static SwipeRefreshLayout fresher;
+    private static Map locatinMap=new HashMap();
 
+    public static Map getLocatinMap() {
+        return locatinMap;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +111,44 @@ public class MainUIActivity extends AppCompatActivity implements View.OnClickLis
 
         main_add.setOnClickListener(this);
         main_share.setOnClickListener(this);
+
+        locatinMap.put("beijing","北京");
+        locatinMap.put("shanghai","上海");
+        locatinMap.put("tianjin","天津");
+        locatinMap.put("chongqing","重庆");
+        locatinMap.put("xianggang","香港");
+        locatinMap.put("aomen","澳门");
+        locatinMap.put("taizhong","台湾");
+        locatinMap.put("jixi","哈尔滨");
+        locatinMap.put("dalian","大连");
+        locatinMap.put("fengzhen","包头");
+        locatinMap.put("zhangjiakou","张家口");
+        locatinMap.put("luoyang","洛阳");
+        locatinMap.put("linfen","临汾");
+        locatinMap.put("heze","菏泽");
+        locatinMap.put("lianyungang","连云港");
+        locatinMap.put("quzhou","衢州");
+        locatinMap.put("xiamen","厦门");
+        locatinMap.put("ganzhou","赣州");
+        locatinMap.put("xiamen","厦门");
+        locatinMap.put("hefei","合肥");
+        locatinMap.put("wuhan","武汉");
+        locatinMap.put("nanning","南宁");
+        locatinMap.put("zhanjiang","湛江");
+        locatinMap.put("changsha","长沙");
+        locatinMap.put("haikou","海口");
+        locatinMap.put("guiyang","贵阳");
+        locatinMap.put("puer","普洱");
+        locatinMap.put("lasa","拉萨");
+        locatinMap.put("chengdu","成都");
+        locatinMap.put("hanzhong","汉中");
+        locatinMap.put("yinchuan","银川");
+        locatinMap.put("qingyang","庆阳");
+        locatinMap.put("yushu","玉树");
+        locatinMap.put("hami","哈密");
+
+
+
     }
 
 
@@ -159,7 +203,7 @@ public class MainUIActivity extends AppCompatActivity implements View.OnClickLis
         if (location.indexOf("广西") >= 0)
             pinyinLocation = "nanning";
         if (location.indexOf("海南") >= 0)
-            pinyinLocation = "hainan";
+            pinyinLocation = "haikou";
         if (location.indexOf("贵州") >= 0)
             pinyinLocation = "guiyang";
         if (location.indexOf("云南") >= 0)
@@ -207,7 +251,7 @@ public class MainUIActivity extends AppCompatActivity implements View.OnClickLis
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
                 //获取当前fragment的天气信息
                 MainUIFragment currentFragment = mSectionAdapter.getCurrentFragment();
-                String share_info = currentFragment.getLocation() + " " + currentFragment.getWeatherInfo();
+                String share_info = locatinMap.get(currentFragment.getLocation()).toString() + " " + currentFragment.getWeatherInfo();
                 intent.putExtra(Intent.EXTRA_TEXT, share_info);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(Intent.createChooser(intent, getTitle()));

@@ -110,13 +110,14 @@ public class MainUIFragment extends Fragment {
             return;
         if (mView == null)
             return;
+        ((TextView) mView.findViewById(R.id.textView5)).setText("     "+MainUIActivity.getLocatinMap().get(location).toString());
         //显示日期
         Date time = mWeatherNow.lastUpdateDate;
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日");
         String dateString = formatter.format(time);
 
-        String strDate = dateString + "\r\n    " + getWeekOfDate(time);
+        String strDate = "    "+dateString + "\r\n             " + getWeekOfDate(time);
         TextView txtDate = (TextView) mView.findViewById(R.id.id_weather_time);
         txtDate.setText(strDate);
         //显示天气icon
