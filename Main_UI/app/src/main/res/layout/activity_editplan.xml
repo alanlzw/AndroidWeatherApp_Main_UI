@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="#FFFFFF"
     android:orientation="vertical"
 
     tools:context="com.example.akchen.main_ui.Activity.EditPlanActivity" >
@@ -61,7 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="起始日期：" />
+            android:text="起始日期："
+            android:textColor="@color/home_round_progress_bar_blue" />
 
         <TextView
             android:id="@+id/tv_date"
@@ -69,21 +70,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="2014-12-10" />
+            android:text="2014-12-10"
+            android:textColor="@color/home_round_progress_bar_blue" />
         <TextView
             style="@style/Base.Theme.AppCompat.Dialog.FixedSize"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="结束日期"
-            />
+            android:textColor="@color/home_round_progress_bar_blue" />
         <TextView
             android:id="@+id/endTime"
             style="@style/Base.Theme.AppCompat.Dialog.FixedSize"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="2016-07-9" />
+            android:text="2016-07-9"
+            android:textColor="@color/home_round_progress_bar_blue" />
     </LinearLayout>
 
     <LinearLayout

@@ -17,6 +17,7 @@
         </activity>
 
         <activity android:name=".Activity.PlanScheduleActivity"/>
+        <activity android:name=".Activity.EditPlanActivity" />
     </application>
 
 </manifest>
