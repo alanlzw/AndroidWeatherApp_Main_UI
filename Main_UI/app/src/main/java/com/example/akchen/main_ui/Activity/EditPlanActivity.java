@@ -44,6 +44,7 @@ public class EditPlanActivity extends Activity implements DateTimeSelectorDialog
     private TextView title;
     private int CURRENT_LEAVE=0;
     private String newPlanName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -91,13 +92,29 @@ public class EditPlanActivity extends Activity implements DateTimeSelectorDialog
         else if(CURRENT_LEAVE==LEAVE_END)
         {
             title.setText("New Plan");
+            editText.setEnabled(true);
+            daTextView.setEnabled(true);
+            endTime.setEnabled(true);
         }
 
 //        ActionBar actionBar=getActionBar();
 //        actionBar.hide();
+        title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog2();
+            }
+        });
         popupMenu=new PopupMenu(this,findViewById(R.id.Menu));
         menu=popupMenu.getMenu();
-        getMenuInflater().inflate(R.menu.popup_menu,menu);
+        if(CURRENT_LEAVE==LEAVE_START)
+        {
+            getMenuInflater().inflate(R.menu.popup_menu,menu);
+        }
+        else if(CURRENT_LEAVE==LEAVE_END)
+        {
+            getMenuInflater().inflate(R.menu.popup,menu);
+        }
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -138,11 +155,13 @@ public class EditPlanActivity extends Activity implements DateTimeSelectorDialog
                         if(CURRENT_LEAVE==LEAVE_START)
                         {
                             weatherDB.delete("Plan",intentPlan.getId());
+                            Intent intent2 = new Intent(EditPlanActivity.this,MainUIActivity.class);
+                            startActivity(intent2);
                         }
                         else if(CURRENT_LEAVE==LEAVE_END)
                         {
-                            Intent intent1=new Intent(EditPlanActivity.this,MainUIActivity.class);
-                            startActivity(intent1);
+                            Intent intent3=new Intent(EditPlanActivity.this,MainUIActivity.class);
+                            startActivity(intent3);
                         }
                         break;
                     default:
@@ -215,7 +234,7 @@ public class EditPlanActivity extends Activity implements DateTimeSelectorDialog
     }
     public void showDialog()
     {
-        AlertDialog.Builder builder=new AlertDialog.Builder(EditPlanActivity.this);
+        AlertDialog.Builder builder=new AlertDialog.Builder(EditPlanActivity.this,AlertDialog.THEME_HOLO_LIGHT);
         LayoutInflater factory=getLayoutInflater();
         final View textEntryView =factory.inflate(R.layout.dialog,null);
         builder.setTitle("请输入计划名:");
@@ -240,6 +259,34 @@ public class EditPlanActivity extends Activity implements DateTimeSelectorDialog
                 }
             }
         });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create().show();
+    }
+    public void showDialog2()
+    {
+        AlertDialog.Builder builder=new AlertDialog.Builder(EditPlanActivity.this,AlertDialog.THEME_HOLO_LIGHT);
+        LayoutInflater factory=getLayoutInflater();
+        final View textEntryView =factory.inflate(R.layout.dialog2,null);
+        builder.setTitle("请输入计划名:");
+        builder.setView(textEntryView);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                EditText planName=(EditText)textEntryView.findViewById(R.id.planName2);
+                planName.setHint(title.getText());
+                newPlanName=planName.getText().toString();
+                if(!"".equals(newPlanName)&&newPlanName!=null)
+                {
+                    title.setText(newPlanName);
+                }
+            }
+        });
+
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

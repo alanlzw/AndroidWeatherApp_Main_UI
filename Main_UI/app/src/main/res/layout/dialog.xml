@@ -12,14 +12,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="计划名"
+        android:text="计划名: "
         android:id="@+id/Add"
         />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/planName"
+        android:background="@drawable/shape"
+        android:textColor="@color/home_text_little_dark_black"
         android:minWidth="200dip"
+        android:minHeight="30dp"
         />
 
 </LinearLayout>

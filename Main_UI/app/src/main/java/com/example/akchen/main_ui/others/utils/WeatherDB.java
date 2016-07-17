@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class WeatherDB {
     public static final String DB_NAME = "Weather_DB";
-    public static final int VERSION = 4;
+    public static final int VERSION = 5;
     private static WeatherDB weatherDB;
     private SQLiteDatabase db;
 
@@ -109,7 +109,7 @@ public class WeatherDB {
                 User user = new User();
                 user.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 user.setUserAccount(cursor.getString(cursor.getColumnIndex("user_account")));
-                user.setUserCity(cursor.getString(cursor.getColumnIndex("user_city")));
+                user.setUserPassword(cursor.getString(cursor.getColumnIndex("user_password")));
                 list.add(user);
             }while (cursor.moveToNext());
         }
@@ -126,7 +126,7 @@ public class WeatherDB {
         {
             ContentValues values=new ContentValues();
             values.put("user_account",user.getUserAccount());
-            values.put("user_city",user.getUserCity());
+            values.put("user_password",user.getUserPassword());
             db.insert("User",null,values);
         }
     }

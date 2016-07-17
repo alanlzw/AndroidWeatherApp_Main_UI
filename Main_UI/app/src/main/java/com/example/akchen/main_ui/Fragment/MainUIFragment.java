@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -160,7 +161,8 @@ public class MainUIFragment extends Fragment {
         txtDay2.setText(day2);
         txtDay3.setText(day3);
         //显示记事内容
-        ListView listView = (ListView) mView.findViewById(R.id.id_list);
+        final ListView listView = (ListView) mView.findViewById(R.id.id_list);
+
         planList=weatherDB.loadPlan(1);
         //用于显示那天干嘛 什么时候 String内省 自己构造一个ArrayList就行 然后自己在GetView里加监听器
         List<String> list = new ArrayList<String>();
@@ -174,6 +176,13 @@ public class MainUIFragment extends Fragment {
         }
         MyShowAdapter madapter = new MyShowAdapter(this.getActivity(), list);
         listView.setAdapter(madapter);
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                listView.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -191,6 +200,7 @@ public class MainUIFragment extends Fragment {
         weatherIconView.requestFocus();
 
     }
+
 
     /**
      * Use this factory method to create a new instance of
