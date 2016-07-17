@@ -163,8 +163,14 @@ public class MainUIFragment extends Fragment {
         txtDay1.setText(day1);
         txtDay2.setText(day2);
         txtDay3.setText(day3);
+<<<<<<< HEAD
 
         ListView listView = (ListView) mView.findViewById(R.id.id_list);
+=======
+        //显示记事内容
+        final ListView listView = (ListView) mView.findViewById(R.id.id_list);
+
+>>>>>>> pr/11
         planList=weatherDB.loadPlan(1);
         //用于显示那天干嘛 什么时候 String内省 自己构造一个ArrayList就行 然后自己在GetView里加监听器
         List<String> list = new ArrayList<String>();
@@ -178,6 +184,7 @@ public class MainUIFragment extends Fragment {
         }
         MyShowAdapter madapter = new MyShowAdapter(this.getActivity(), list);
         listView.setAdapter(madapter);
+<<<<<<< HEAD
 
         int totalHeight = 0;
         for (int i = 0; i < madapter.getCount(); i++) {
@@ -191,6 +198,15 @@ public class MainUIFragment extends Fragment {
         ((ViewGroup.MarginLayoutParams)params).setMargins(10, 10, 10, 10);
         listView.setLayoutParams(params);
 
+=======
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                listView.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+>>>>>>> pr/11
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -208,6 +224,7 @@ public class MainUIFragment extends Fragment {
         weatherIconView.requestFocus();
 
     }
+
 
     /**
      * Use this factory method to create a new instance of

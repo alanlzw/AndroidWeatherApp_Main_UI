@@ -6,7 +6,7 @@ package com.example.akchen.main_ui.others.utils;
 public class User {
     private int id;
     private String userAccount;
-    private String userCity;
+    private String userPassword;
 
     public int getId()
     {
@@ -25,13 +25,13 @@ public class User {
     {
         this.userAccount=userAccount;
     }
-    public String getUserCity()
-    {
-        return userCity;
-    }
 
-    public void setUserCity(String userCity)
+    public String getUserPassword()
     {
-        this.userCity=userCity;
+        return userPassword;
+    }
+    public void setUserPassword(String userPassword)
+    {
+        this.userPassword=userPassword;
     }
 }

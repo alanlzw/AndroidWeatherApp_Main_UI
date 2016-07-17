@@ -21,7 +21,7 @@ public class CreateDBAndTable extends SQLiteOpenHelper {
     public static final String CREATE_USER="create table User ("
             +"id integer primary key autoincrement, "
             +"user_account text, "
-            +"user_city text)" ;
+            +"user_password text)";
     public CreateDBAndTable(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
     {
         super(context,name,factory,version);

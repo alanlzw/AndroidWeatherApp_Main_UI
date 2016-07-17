@@ -6,9 +6,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.support.v7.widget.PopupMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+=======
+import android.view.MotionEvent;
+>>>>>>> pr/11
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
