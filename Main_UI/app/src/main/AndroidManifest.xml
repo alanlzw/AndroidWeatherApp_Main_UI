@@ -16,7 +16,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activity.EditPlanActivity"/>
         <activity android:name=".Activity.PlanScheduleActivity"/>
     </application>
 

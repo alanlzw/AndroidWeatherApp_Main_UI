@@ -40,7 +40,7 @@
     <!-- 首页上方左侧个人信息代用名文字的颜色，略深黑 -->
     <color name="home_text_little_dark_black">#323232</color>
     <!-- 首页上方环形进度条的颜色，蓝色 -->
-    <color name="home_round_progress_bar_blue">#ff3896F3</color>
+    <color name="home_round_progress_bar_blue">#3896f3</color>
     <!-- 首页上方环形进度条的默认颜色，灰色 -->
     <color name="home_round_progress_bar_default_gray">#D1D1D1</color>
     <color name="dialog_pressed_bg_color">#e6e6e6</color>

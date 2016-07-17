@@ -17,7 +17,6 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.example.akchen.main_ui.Activity.EditPlanActivity;
 import com.example.akchen.main_ui.Activity.MainUIActivity;
 import com.example.akchen.main_ui.Activity.PlanScheduleActivity;
 import com.example.akchen.main_ui.Adapter.MyShowAdapter;

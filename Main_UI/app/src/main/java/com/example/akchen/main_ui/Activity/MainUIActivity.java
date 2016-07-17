@@ -6,10 +6,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.PopupMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.akchen.main_ui.Fragment.MainUIFragment;
 import com.example.akchen.main_ui.R;
@@ -32,7 +36,8 @@ public class MainUIActivity extends AppCompatActivity implements View.OnClickLis
 
     private static SectionsPagerAdapter mSectionAdapter = null;
     private static ViewPager mViewPager;
-    private Button main_add = null;
+    private PopupMenu main_city = null;
+    private Menu menuItem=null;
     private Button main_share = null;
     private LocationSelectorDialogBuilder locationBuilder;
     private static SwipeRefreshLayout fresher;
@@ -107,10 +112,38 @@ public class MainUIActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 });
         main_share = (Button) findViewById(R.id.main_share);
-        main_add = (Button) findViewById(R.id.main_add);
-
-        main_add.setOnClickListener(this);
         main_share.setOnClickListener(this);
+
+        main_city = new PopupMenu(this, findViewById(R.id.main_city));
+        menuItem=main_city.getMenu();
+        getMenuInflater().inflate(R.menu.pop_main_menu,menuItem);
+        main_city.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.pop_addCity:
+                        if (locationBuilder == null) {
+                            locationBuilder = LocationSelectorDialogBuilder.getInstance(MainUIActivity.this);
+                            locationBuilder.setOnSaveLocationLister(MainUIActivity.this);
+
+                        }
+                        locationBuilder.show();
+                        break;
+
+                    case R.id.pop_deleteCity:
+                        MainUIFragment currentFragment = mSectionAdapter.getCurrentFragment();
+                        if(mSectionAdapter.getLocationList().size()>0)
+                        {
+                        mSectionAdapter.getLocationList().remove(currentFragment.getLocation());
+                        mSectionAdapter.notifyDataSetChanged();}
+                        else
+                            Toast.makeText(MainUIActivity.this,"无城市",Toast.LENGTH_SHORT);
+                }
+                return false;
+            }
+        });
+
 
         locatinMap.put("beijing","北京");
         locatinMap.put("shanghai","上海");
@@ -149,6 +182,10 @@ public class MainUIActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
+    }
+    public void pop_main(View view)
+    {
+        main_city.show();
     }
 
 
@@ -235,6 +272,7 @@ public class MainUIActivity extends AppCompatActivity implements View.OnClickLis
             mSectionAdapter.notifyDataSetChanged();
         }
         mSectionAdapter.notifyDataSetChanged();
+        Toast.makeText(MainUIActivity.this,"已添加",Toast.LENGTH_SHORT);
 
     }
 
@@ -256,13 +294,7 @@ public class MainUIActivity extends AppCompatActivity implements View.OnClickLis
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(Intent.createChooser(intent, getTitle()));
                 break;
-            case R.id.main_add:
-                if (locationBuilder == null) {
-                    locationBuilder = LocationSelectorDialogBuilder.getInstance(this);
-                    locationBuilder.setOnSaveLocationLister(this);
-                }
-                locationBuilder.show();
-                break;
+
         }
     }
 }

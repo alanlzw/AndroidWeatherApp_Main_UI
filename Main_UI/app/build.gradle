@@ -26,4 +26,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:support-v4:24.0.0'
     compile files('libs/nineoldandroids-2.4.0.jar')
+    compile 'com.android.support:design:24.0.0'
 }

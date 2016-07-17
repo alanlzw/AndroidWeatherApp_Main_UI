@@ -22,12 +22,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/main_add"
+            android:id="@+id/main_city"
             android:layout_gravity="center"
             android:layout_margin="5dip"
             android:textColor="#fff"
-            android:text="add  "
+            android:text="city "
             android:layout_weight="1"
+            android:onClick="pop_main"
             android:background="#00000000" />
 
         <TextView
