@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/pop_addCity"
+        android:title="添加"
+        android:icon="@color/base_bg" />
+    <item
+        android:id="@+id/pop_deleteCity"
+        android:title="删除"
+        android:icon="@color/base_bg" />
+
+
+</menu>

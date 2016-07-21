@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/liner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/home_round_progress_bar_blue"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="0dip"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/home_round_progress_bar_blue"
+            android:gravity="center"
+            android:text="Plan Schedule"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <CalendarView
+
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusedMonthDateColor="@color/colorPrimary" />
+
+
+    <ListView
+        android:id="@+id/planScheduleListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="25sp"
+        android:divider="@color/black_more_half"
+        android:listSelector="@drawable/setbar_bg" />
+
+</LinearLayout>
